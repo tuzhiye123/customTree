@@ -1,0 +1,54 @@
+[
+  {"id":"200","text":"淮安公司淮安公司淮安公司淮安公司淮安公司淮安公司","name":"江苏公司1",
+    "children":[
+      {
+        "id":"2001",
+        "isMember":true,
+        "text":"淮安公司6",
+        "state":"open",
+        "children":[
+          {
+            "id":"20011",
+            "isMember":true,
+            "text":"徐冰3",
+            "state":"open"
+          },
+          {
+            "id":"20012",
+            "isMember":true,
+            "text":"王明3",
+            "state":"open"
+          }
+        ]
+      },
+      {
+        "id":"2002",
+        "isMember":true,
+        "text":"李四",
+        "state":"open"
+      }
+    ]
+  },
+
+  {"id":"201","text":"淮安公司2","name":"江苏公司1","state":"closed"},
+
+  {"id":"169","text":"扬州公司扬州公司扬州公司","name":"江苏公司1",
+    "children":[
+      {
+        "id":"1691",
+        "isMember":true,
+        "text":"徐冰4",
+        "state":"open"
+      },
+      {
+        "id":"1692",
+        "isMember":true,
+        "text":"王明4",
+        "state":"open"
+      }
+    ]
+  },
+  {"id":"301","text":"淮安公司3","name":"江苏公司1","state":"closed"},
+  {"id":"401","text":"淮安公司4","name":"江苏公司1","state":"closed"}
+
+]

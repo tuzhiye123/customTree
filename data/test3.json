@@ -1,0 +1,44 @@
+[
+  {"id":"167","text":"南京公司1南京公司1南京公司1南京公司1南京公司1南京公司1南京公司1南京公司1南京公司1南京公司1南京公司1南京公司1南京公司1南京公司1","name":"江苏公司1",
+      "children":[
+      {
+        "id":1141,
+        "isMember":true,
+        "text":"王丽",
+        "state":"open"
+      },
+      {
+        "id":1142,
+        "isMember":true,
+        "text":"黄河",
+        "state":"open"
+      },
+        {
+          "id":1143,
+          "isMember":true,
+          "text":"徐冰",
+          "children":[
+            {
+              "id":11431,
+              "isMember":true,
+              "text":"徐冰1",
+              "state":"open"
+            },
+            {
+              "id":11432,
+              "isMember":true,
+              "text":"徐冰2",
+              "state":"open"
+            }
+
+          ]
+
+        }
+    ]
+  },
+
+  {"id":"162","text":"南京公司2","name":"江苏公司1","state":"closed"},
+  {"id":"163","text":"南京公司3","name":"江苏公司1","state":"closed"},
+
+  {"id":"164","text":"王坤","name":"江苏公司1","state":"open"}
+]

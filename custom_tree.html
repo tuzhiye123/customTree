@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=8">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=0">
+    <title></title>
+
+    <!-- ie7及其以下没有JSON 需要引入json2-->
+    <script src="libs/json/json2.js"></script>
+    <script src="libs/jquery/jquery-1.11.2.min.js"></script>
+    <link href="libs/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <script src="libs/bootstrap/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="css/custom_tree.css">
+    <script src="js/createTree.js"></script>
+
+</head>
+<body>
+
+<div id="tree1-div" style="padding-top: 10px;padding-left: 10px;">
+</div>
+
+<!--tree方法测试-->
+<div style="margin-top: 50px;margin-left: 20px;">tree所有方法测试:
+    <span style="padding: 10px;background-color: darkgrey;" id="test-id">点击我进行测试</span>
+</div>
+
+
+<script type="text/javascript">
+
+    $("#tree1-div").createTree({
+
+        width:"500px",
+        height:"438px",
+
+        isShowCheckbox:true,
+        isShowRadio:false,
+        isSingleSelect:false,//没有checkbox,没有radio的情况下,是单选还是复选
+
+        url:"data/test7.json",
+        method:"POST",
+
+        //节点单击触发事件
+        onClick:function(node){
+//            alert("onClick text:"+ node.text);
+        },
+
+        //节点双击触发事件
+        onDblClick:function(node){
+//            alert("onDblClick:"+ node.text);
+        },
+
+        //checkbox选中触发事件
+        onCheckboxSelect:function(node){
+//            alert("onCheckboxSelect:"+ node.id);
+        },
+
+        //checkbox取消选中触发事件
+        oncheckboxUnSelect:function(node){
+//            alert("oncheckboxUnSelect:"+ node.id);
+        },
+
+        //radio选中的触发事件
+        onRadioSelect:function(node){
+//            alert("onRadioSelect:"+ node.text);
+        },
+
+        //radio选中的触发事件
+        onRadioUnSelect:function(node){
+//            alert("onRadioSelect:"+ node.text);
+        },
+
+        //父节点折叠回调
+        onCollapse:function(node){
+//            alert("onCollapse:"+node.text);
+        },
+
+        //父节点展开回调
+        onExpand:function(node){
+//            alert("onExpand:"+node.text);
+        },
+
+        //节点选中的回调,包括父节点和子节点
+        onSelect:function(node){
+//            alert("onSelect:"+node);
+        },
+
+        //节点取消选中的回调,包括父节点和子节点
+        onUnSelect:function(node){
+//            alert("onUnSelect:"+node.text);
+        },
+
+        //加载成功回调,node对应加载的节点node json数据,data对应请求成功的数据
+        onLoadSuccess:function(node,data){
+
+        },
+
+        //加载失败的回调,就是ajax请求失败的error
+        onLoadError:function(error){
+
+        }
+    });
+
+    //方法测试
+    $("#test-id").on("click",function(){
+
+        //获取选中的节点
+        var selectedNodes =  $("#tree1-div").createTree('getSelected');
+
+        if(selectedNodes){
+
+            //这里面选中的可能会有很多个节点(包含父节点和子节点),只选取第一个节点进行拼接树
+            var node = selectedNodes[0];
+
+
+            //选中节点进行拼接树,传入prama,包括要拼接的dom对象(key为parent),要拼接的树的数据(key为data)
+            $("#tree1-div").createTree('append',{
+                parent:node.target,
+                data:
+                        [
+                            {"id":"162","text":"南通公司","name":"南通公司","state":"closed"}
+                        ]
+            });
+
+
+
+//            //折叠和展开切换,传入选中的dom对象
+//            $("#tree1-div").createTree('toggleNode',
+//                node.target
+//            );
+
+
+
+//            //判断是否是叶节点(即子节点),传入选中的dom对象
+//            var isLeaf = $("#tree1-div").createTree('isLeafNode',
+//                node.target
+//            );
+//            alert("isLeaf:" + isLeaf);
+
+
+
+//            //折叠某个父节点,传入选中的dom对象
+//            $("#tree1-div").createTree('collapseNode',
+//                node.target
+//            );
+
+
+
+//            //展开某个父节点,传入选中的dom对象
+//            $("#tree1-div").createTree('expandNode',
+//                node.target
+//            );
+
+
+
+//            //展开某个父节点,传入选中的dom对象
+//            $("#tree1-div").createTree('remove',
+//                    node.target
+//            );
+
+
+        }
+
+
+
+//        //加载tree,需要传入data
+//        $("#tree1-div").createTree('loadData',
+//
+//            [
+//                {"id":"162","text":"南通公司","name":"南通公司","state":"closed"}
+//            ]
+//        );
+
+
+
+//        //关闭所有节点
+//        $("#tree1-div").createTree('collapseAll');
+
+
+//        //展开所有节点,注意如果父节点里面没有子节点,需要异步加载才有子节点的,则没有展开,只有向下箭头
+//        $("#tree1-div").createTree('expandAll');
+
+
+
+//        //根据节点id搜索节点,搜索成功就返回node,没有搜索到就返回null
+//        var resultNode = $("#tree1-div").createTree('findNode',
+//            1691
+//        );
+//        if(resultNode){
+//            alert("resultNode id:" + resultNode.id);
+//        }
+
+
+
+//        //重新加载树
+//        $("#tree1-div").createTree('reload');
+
+
+
+//        //获取options
+//        var options = $("#tree1-div").createTree('getOptions');
+//        alert("width1:"+ options.width);
+
+
+    });
+
+
+</script>
+
+</body>
+</html>

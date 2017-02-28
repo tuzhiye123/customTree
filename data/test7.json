@@ -1,0 +1,23 @@
+[
+  {"id":"169","text":"无锡公司无锡公司无锡公司无锡公司无锡公司无锡公司无锡公司无锡公司无锡公司","name":"无锡公司",
+    "children":[
+      {
+        "id":"1691",
+        "isMember":true,
+        "text":"王兰",
+        "state":"open"
+      },
+      {
+        "id":"1692",
+        "isMember":true,
+        "text":"李建",
+        "state":"open"
+      }
+    ]
+  },
+
+  {"id":"170","text":"徐州公司","name":"徐州公司","state":"closed"},
+  {"id":"171","text":"盐城公司","name":"盐城公司","state":"closed"},
+
+  {"id":"172","text":"李时","name":"李时珍","state":"open"}
+]
