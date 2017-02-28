@@ -9,9 +9,11 @@
 3.usage（使用）
 
 1）tree用空的div元素来定义
+
 <div id="tree1-div"></div>
 
 2）javascript加载数据
+
 <script type="text/javascript">
 $("#tree1-div").createTree({
         width:"500px",
