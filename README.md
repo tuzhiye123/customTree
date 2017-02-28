@@ -5,8 +5,10 @@
 树状结构显示数据，具有展开，折叠，同步加载，异步加载功能。仿造easyUI中的tree，但是功能没有那么齐全。
 
 3.usage（使用）
+
 1）tree用空的div元素来定义
 <div id="tree1-div"></div>
+
 2）javascript加载数据
 <script type="text/javascript">
 $("#tree1-div").createTree({
