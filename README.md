@@ -1,6 +1,6 @@
 1.customTree（自定义树）
 
-一个自定义 jquery plugin
+一个自定义 js plugin。
 
 2.feature（特征）
 
