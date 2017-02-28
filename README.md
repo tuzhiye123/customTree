@@ -1,7 +1,9 @@
 1.customTree（自定义树）
+
 一个自定义 jquery plugin
 
 2.feature（特征）
+
 树状结构显示数据，具有展开，折叠，同步加载，异步加载功能。仿造easyUI中的tree，但是功能没有那么齐全。
 
 3.usage（使用）
@@ -23,12 +25,14 @@ $("#tree1-div").createTree({
 </script>
 
 4.tree data format（数据格式）
+
 id：节点的id，对于加载远程数据很重要。
 text：要显示的节点文本。
 state：节点的状态，为open或closed，当设置为closed，表示该节点还有子节点，可以远程加载子节点。
 children：子节点的节点数组。
 
 5.attribute（属性）
+
 url：获取远程数据的url。
 method：请求url的方法。
 width：指定宽度。
@@ -38,6 +42,7 @@ isShowRadio:是否显示radio。
 isSingleSelect:checkbox和radio都为false，是否是单选。
 
 6.event（事件）
+
 该插件的回调事件，参数“node”，包括：
 id：节点的id
 text：节点显示的文本
@@ -58,6 +63,7 @@ onLoadSuccess                node，data                   当数据加载成功
 onLoadError                  error                        当数据加载失败是触发。
 
 7.methods（方法）
+
 名称                          参数                          描述                      
 getOptions                    none                         返回树的选项（options）。
 getSelected                   none                         获取选中的节点并返回它，如果没有选中节点，则返回 null。
