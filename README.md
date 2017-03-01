@@ -52,7 +52,7 @@ isShowRadio:是否显示radio。
 
 isSingleSelect:checkbox和radio都为false，是否是单选。
 
-6.event（事件）
+6.events（事件）
 
 该插件的回调事件，参数“node”，包括：
 
@@ -120,3 +120,8 @@ collapseNode                  target                       折叠一个节点。
 
 expandNode                    target                       展开一个节点。
 
+8.attention（注意）
+
+如果下载下来的项目运行，报错 Origin null is not allowed by Access-Control-Allow-Origin.
+
+需要加入<meta http-equiv="Access-Control-Allow-Origin" content="*">
