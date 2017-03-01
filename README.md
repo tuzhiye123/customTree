@@ -122,6 +122,6 @@ expandNode                    target                       展开一个节点。
 
 8.attention（注意）
 
-如果下载下来的项目运行，报错 Origin null is not allowed by Access-Control-Allow-Origin.
+如果下载下来的项目运行，报错: Origin null is not allowed by Access-Control-Allow-Origin.
 
-需要加入<meta http-equiv="Access-Control-Allow-Origin" content="*">
+需要加入:<meta http-equiv="Access-Control-Allow-Origin" content="*">
