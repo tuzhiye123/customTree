@@ -1,11 +1,4 @@
 @charset "utf-8";
-/*==================================================
-*此文件不允许对已发布的控件样式代码样式进行修改，只允许新增。否则会影响全局
-*控件名称：人员组织选择
-*控件用途：用于人员组织的筛选
-*作者：赵红霞
-*日期：2016-5-12
-===================================================*/
 
 /*************扁平****按钮样式************************/
 .cmcc_btn{display:inline-block;padding:4px 20px;margin-bottom:0;font-size:14px;font-weight:400;line-height:1.42857143;text-align:center;white-space:nowrap;vertical-align:middle;-ms-touch-action:manipulation;touch-action:manipulation;cursor:pointer;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;background-image:none;border-radius:4px;position:relative;}
