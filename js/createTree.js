@@ -267,10 +267,14 @@
                 input.prop("checked", true);
                 input.parent().addClass("cmcc_check_on1");
                 el_li.find("a").css("color","#2e8fe5");
-                //checkbox选中回调事件
-                options.onCheckboxSelect(node);
-                //子节点选中
-                options.onSelect(node);
+                if(options.onCheckboxSelect){
+                    //checkbox选中回调事件
+                    options.onCheckboxSelect(node);
+                }
+                if(options.onSelect){
+                    //子节点选中
+                    options.onSelect(node);
+                }
 
                 var ul = el_li.parent();
                 var children_lis=ul.children("li");//获取ul中的里标签,children_lis.size()查看里面有多少li
@@ -293,11 +297,14 @@
                 input.prop("checked", false);
                 input.parent().removeClass("cmcc_check_on1");
                 el_li.find("a").css("color","#7f7f7f");
-                //checkbox取消选中回调事件
-                options.oncheckboxUnSelect(node);
-                //子节点取消选中
-                options.onUnSelect(node);
-
+                if(options.oncheckboxUnSelect){
+                    //checkbox取消选中回调事件
+                    options.oncheckboxUnSelect(node);
+                }
+                if(options.onUnSelect){
+                    //子节点取消选中
+                    options.onUnSelect(node);
+                }
 
                 //取消父节点的选中(cmcc_check_on1和checked)
                 findParentLiUnSelect(el_li);
@@ -346,10 +353,14 @@
                 el_li.find("a").css("color","#2e8fe5");
                 el_li.attr("selectAttr","true");
 
-                //radio选中回调
-                options.onRadioSelect(node);
-                //子节点选中
-                options.onSelect(node);
+                if(options.onRadioSelect){
+                    //radio选中回调
+                    options.onRadioSelect(node);
+                }
+                if(options.onSelect){
+                    //子节点选中
+                    options.onSelect(node);
+                }
 
             }else{
 
@@ -360,10 +371,14 @@
                 el_li.attr("selectAttr","false");
                 el_li.find("a").css("color","#7f7f7f");
 
-                //radio取消选中回调
-                options.onRadioUnSelect(node);
-                //子节点取消选中
-                options.onUnSelect(node);
+                if(options.onRadioUnSelect){
+                    //radio取消选中回调
+                    options.onRadioUnSelect(node);
+                }
+                if(options.onUnSelect){
+                    //子节点取消选中
+                    options.onUnSelect(node);
+                }
             }
         });
 
@@ -383,7 +398,7 @@
         });
 
         /*********************父li折叠和展开事件***********************/
-            //父节点的展开和折叠调用方法
+        //父节点的展开和折叠调用方法
         $(elementIdString+' .cmcc_left_menu-1 li .li-div1').unbind("click").click(function(){
 
             //获取该li
@@ -420,16 +435,20 @@
                     li.attr("selectAttr","true");
                     li.children().children("a").css("color","#2e8fe5");
 
-                    //子节点选中
-                    options.onSelect(node);
+                    if(options.onSelect){
+                        //子节点选中
+                        options.onSelect(node);
+                    }
 
                 }else{//为true,则改变为非选中状态
 
                     li.attr("selectAttr","false");
                     li.children().children("a").css("color","#7f7f7f");
 
-                    //子节点取消选中
-                    options.onUnSelect(node);
+                    if(options.onUnSelect){
+                        //子节点取消选中
+                        options.onUnSelect(node);
+                    }
                 }
 
             }else if((options.isShowCheckbox == false && options.isShowRadio == false && options.isSingleSelect == false) || (options.isShowCheckbox == true && options.isShowRadio == false)){
@@ -445,15 +464,19 @@
                     li.attr("selectAttr","true");
                     li.children().children("a").css("color","#2e8fe5");
 
-                    //子节点选中
-                    options.onSelect(node);
+                    if(options.onSelect){
+                        //子节点选中
+                        options.onSelect(node);
+                    }
 
                 }else{
 
                     li.attr("selectAttr","false");
                     li.children().children("a").css("color","#7f7f7f");
-                    //子节点取消选中
-                    options.onUnSelect(node);
+                    if(options.onUnSelect){
+                        //子节点取消选中
+                        options.onUnSelect(node);
+                    }
                 }
             }
 
@@ -481,14 +504,20 @@
                             liTarget.append(ul);
                             //设置li的id
                             liTarget.attr("id",currentClosedId);
+                            if(options.onLoadSuccess){
+                                //加载成功回调
+                                options.onLoadSuccess(node,data);
+                            }
                             collapseOrExpand(liDiv1,options,node);
                             //绑定子子节点事件
                             bindNodeEvent(target,options,currentClosedId,data);
                         },
                         error:function(error){
                             alert("数据请求错误");
-                            //请求数据失败回调
-                            options.onLoadError(error);
+                            if(options.onLoadError){
+                                //请求数据失败回调
+                                options.onLoadError(error);
+                            }
                         }
                     });
                 }else{
@@ -501,7 +530,7 @@
         });
 
         /****************成员li点击事件**************************/
-            //li双击事件
+        //li双击事件
         $(elementIdString+' .li-div2').parent().unbind("dblclick").on("dblclick",function(){
             var el_li=$(this);
             isDblClick = true;
@@ -510,8 +539,10 @@
             //添加target
             node["target"] = el_li;
 
-            //双击回调,checkbox和radio是一样的callback
-            options.onDblClick(node);
+            if(options.onDblClick){
+                //双击回调,checkbox和radio是一样的callback
+                options.onDblClick(node);
+            }
         });
 
         //li单击事件
@@ -540,10 +571,14 @@
                         el_li.attr("selectAttr","false");
                         el_li.find("a").css("color","#7f7f7f");
 
-                        //checkbox取消选中回调事件
-                        options.oncheckboxUnSelect(node);
-                        //取消选中子节点
-                        options.onUnSelect(node);
+                        if(options.oncheckboxUnSelect){
+                            //checkbox取消选中回调事件
+                            options.oncheckboxUnSelect(node);
+                        }
+                        if(options.onUnSelect){
+                            //取消选中子节点
+                            options.onUnSelect(node);
+                        }
                         //取消父节点的选中(cmcc_check_on1和checked)
                         findParentLiUnSelect(el_li);
 
@@ -559,10 +594,14 @@
                         input.parent().addClass("cmcc_check_on1");
                         el_li.find("a").css("color","#2e8fe5");
 
-                        //checkbox选中回调事件
-                        options.onCheckboxSelect(node);
-                        //选中子节点
-                        options.onSelect(node);
+                        if(options.onCheckboxSelect){
+                            //checkbox选中回调事件
+                            options.onCheckboxSelect(node);
+                        }
+                        if(options.onSelect){
+                            //选中子节点
+                            options.onSelect(node);
+                        }
 
                         var ul = el_li.parent();
                         var children_lis=ul.children("li");//获取ul中的里标签,children_lis.size()查看里面有多少li
@@ -607,10 +646,14 @@
                         el_li.find("a").css("color","#2e8fe5");
                         el_li.attr("selectAttr","true");
 
-                        //radio选中回调
-                        options.onRadioSelect(node);
-                        //选中子节点
-                        options.onSelect(node);
+                        if(options.onRadioSelect){
+                            //radio选中回调
+                            options.onRadioSelect(node);
+                        }
+                        if(options.onSelect){
+                            //选中子节点
+                            options.onSelect(node);
+                        }
 
                     }else{
 
@@ -621,10 +664,15 @@
                         el_li.attr("selectAttr","false");
                         el_li.find("a").css("color","#7f7f7f");
 
-                        //radio取消选中回调
-                        options.onRadioUnSelect(node);
-                        //取消选中子节点
-                        options.onUnSelect(node);
+                        if(options.onRadioUnSelect){
+                            //radio取消选中回调
+                            options.onRadioUnSelect(node);
+                        }
+                        if(options.onUnSelect){
+                            //取消选中子节点
+                            options.onUnSelect(node);
+                        }
+
                     }
 
                 }else{
@@ -650,12 +698,16 @@
                             //改变选中的li
                             el_li.attr("selectAttr","true");
                             a.css("color","#2e8fe5");
-                            options.onSelect(node);
+                            if(options.onSelect){
+                                options.onSelect(node);
+                            }
 
                         }else{//没选中
                             el_li.attr("selectAttr","false");
                             a.css("color","#7f7f7f");
-                            options.onUnSelect(node);
+                            if(options.onUnSelect){
+                                options.onUnSelect(node);
+                            }
                         }
 
                     }else{//多选
@@ -670,18 +722,24 @@
 
                             el_li.attr("selectAttr","true");
                             a.css("color","#2e8fe5");
-                            options.onSelect(node);
+                            if(options.onSelect){
+                                options.onSelect(node);
+                            }
 
                         }else{
                             el_li.attr("selectAttr","false");
                             a.css("color","#7f7f7f");
-                            options.onUnSelect(node);
+                            if(options.onUnSelect){
+                                options.onUnSelect(node);
+                            }
                         }
                     }
                 }
 
-                //点击回调,注意回调需要在,点击li-div2完成所有事件之后再回调
-                options.onClick(node);
+                if(options.onClick){
+                    //点击回调,注意回调需要在,点击li-div2完成所有事件之后再回调
+                    options.onClick(node);
+                }
 
             },200);
         });
@@ -696,7 +754,7 @@
         var ulIdString = elementIdString + '-ul-'+ nodeId;//ul的id
 
         /********************复选框点击事件*********************/
-            //父节点的checkbox
+        //父节点的checkbox
         $(elementIdString + ' ' + ulIdString + ' .checkbox_parent input[type="checkbox"]').off("click").on("click",function(event){
             stopPropagation(event);
             $(this).parent().hasClass("cmcc_check_on1")? $(this).parent().removeClass("cmcc_check_on1"):$(this).parent().addClass("cmcc_check_on1");
@@ -757,10 +815,14 @@
                 input.prop("checked", true);
                 input.parent().addClass("cmcc_check_on1");
                 el_li.find("a").css("color","#2e8fe5");
-                //checkbox选中回调事件
-                options.onCheckboxSelect(node);
-                //选中子节点
-                options.onSelect(node);
+                if(options.onCheckboxSelect){
+                    //checkbox选中回调事件
+                    options.onCheckboxSelect(node);
+                }
+                if(options.onSelect){
+                    //选中子节点
+                    options.onSelect(node);
+                }
 
                 var ul = el_li.parent();
                 var children_lis=ul.children("li");//获取ul中的里标签,children_lis.size()查看里面有多少li
@@ -783,10 +845,14 @@
                 input.prop("checked", false);
                 input.parent().removeClass("cmcc_check_on1");
                 el_li.find("a").css("color","#7f7f7f");
-                //checkbox选中回调事件
-                options.oncheckboxUnSelect(node);
-                //取消选中子节点
-                options.onUnSelect(node);
+                if(options.oncheckboxUnSelect){
+                    //checkbox选中回调事件
+                    options.oncheckboxUnSelect(node);
+                }
+                if(options.onUnSelect){
+                    //取消选中子节点
+                    options.onUnSelect(node);
+                }
 
                 //取消父节点的选中(cmcc_check_on1和checked)
                 findParentLiUnSelect(el_li);
@@ -833,10 +899,14 @@
                 el_li.find("a").css("color","#2e8fe5");
                 el_li.attr("selectAttr","true");
 
-                //radio选中回调
-                options.onRadioSelect(node);
-                //选中子节点
-                options.onSelect(node);
+                if(options.onRadioSelect){
+                    //radio选中回调
+                    options.onRadioSelect(node);
+                }
+                if(options.onSelect){
+                    //选中子节点
+                    options.onSelect(node);
+                }
 
             }else{
 
@@ -847,10 +917,14 @@
                 el_li.attr("selectAttr","false");
                 el_li.find("a").css("color","#7f7f7f");
 
-                //radio取消选中回调
-                options.onRadioUnSelect(node);
-                //取消选中子节点
-                options.onUnSelect(node);
+                if(options.onRadioUnSelect){
+                    //radio取消选中回调
+                    options.onRadioUnSelect(node);
+                }
+                if(options.onUnSelect){
+                    //取消选中子节点
+                    options.onUnSelect(node);
+                }
             }
         });
 
@@ -917,10 +991,14 @@
                         el_li.attr("selectAttr","false");
                         el_li.find("a").css("color","#7f7f7f");
 
-                        //checkbox取消选中回调事件
-                        options.oncheckboxUnSelect(node);
-                        //取消选中子节点
-                        options.onUnSelect(node);
+                        if(options.oncheckboxUnSelect){
+                            //checkbox取消选中回调事件
+                            options.oncheckboxUnSelect(node);
+                        }
+                        if(options.onUnSelect){
+                            //取消选中子节点
+                            options.onUnSelect(node);
+                        }
 
                         //取消父节点的选中(cmcc_check_on1和checked)
                         findParentLiUnSelect(el_li);
@@ -937,10 +1015,14 @@
                         input.parent().addClass("cmcc_check_on1");
                         el_li.find("a").css("color","#2e8fe5");
 
-                        //checkbox选中回调事件
-                        options.onCheckboxSelect(node);
-                        //选中子节点
-                        options.onSelect(node);
+                        if(options.onCheckboxSelect){
+                            //checkbox选中回调事件
+                            options.onCheckboxSelect(node);
+                        }
+                        if(options.onSelect){
+                            //选中子节点
+                            options.onSelect(node);
+                        }
 
                         var ul = el_li.parent();
                         var children_lis=ul.children("li");//获取ul中的里标签,children_lis.size()查看里面有多少li
@@ -985,10 +1067,14 @@
 
                         el_li.attr("selectAttr","true");
 
-                        //radio选中回调
-                        options.onRadioSelect(node);
-                        //选中子节点
-                        options.onSelect(node);
+                        if(options.onRadioSelect){
+                            //radio选中回调
+                            options.onRadioSelect(node);
+                        }
+                        if(options.onSelect){
+                            //选中子节点
+                            options.onSelect(node);
+                        }
 
                     }else{
 
@@ -999,10 +1085,14 @@
                         el_li.attr("selectAttr","false");
                         el_li.find("a").css("color","#7f7f7f");
 
-                        //radio取消选中回调
-                        options.onRadioUnSelect(node);
-                        //取消选中子节点
-                        options.onUnSelect(node);
+                        if(options.onRadioUnSelect){
+                            //radio取消选中回调
+                            options.onRadioUnSelect(node);
+                        }
+                        if(options.onUnSelect){
+                            //取消选中子节点
+                            options.onUnSelect(node);
+                        }
                     }
 
                 }else{
@@ -1028,12 +1118,16 @@
                             //改变选中的li
                             el_li.attr("selectAttr","true");
                             a.css("color","#2e8fe5");
-                            options.onSelect(node);
+                            if(options.onSelect){
+                                options.onSelect(node);
+                            }
 
                         }else{
                             el_li.attr("selectAttr","false");
                             a.css("color","#7f7f7f");
-                            options.onUnSelect(node);
+                            if(options.onUnSelect){
+                                options.onUnSelect(node);
+                            }
                         }
 
                     }else{//多选
@@ -1048,17 +1142,23 @@
 
                             el_li.attr("selectAttr","true");
                             a.css("color","#2e8fe5");
-                            options.onSelect(node);
+                            if(options.onSelect){
+                                options.onSelect(node);
+                            }
 
                         }else{
                             el_li.attr("selectAttr","false");
                             a.css("color","#7f7f7f");
-                            options.onUnSelect(node);
+                            if(options.onUnSelect){
+                                options.onUnSelect(node);
+                            }
                         }
                     }
                 }
-                //点击回调,在最后再回调
-                options.onClick(node);
+                if(options.onClick){
+                    //点击回调,在最后再回调
+                    options.onClick(node);
+                }
 
             },200);
         });
@@ -1073,8 +1173,10 @@
             //添加target
             node["target"] = el_li;
 
-            //双击回调,checkbox和radio是一样的callback
-            options.onDblClick(node);
+            if(options.onDblClick){
+                //双击回调,checkbox和radio是一样的callback
+                options.onDblClick(node);
+            }
         });
 
         //父节点的展开和折叠调用方法
@@ -1114,16 +1216,20 @@
                     li.attr("selectAttr","true");
                     li.children().children("a").css("color","#2e8fe5");
 
-                    //选中子节点
-                    options.onSelect(node);
+                    if(options.onSelect){
+                        //选中子节点
+                        options.onSelect(node);
+                    }
 
                 }else{
 
                     li.attr("selectAttr","false");
                     li.children().children("a").css("color","#7f7f7f");
 
-                    //取消选中子节点
-                    options.onUnSelect(node);
+                    if(options.onUnSelect){
+                        //取消选中子节点
+                        options.onUnSelect(node);
+                    }
                 }
 
             }else{
@@ -1139,16 +1245,20 @@
                     li.attr("selectAttr","true");
                     li.children().children("a").css("color","#2e8fe5");
 
-                    //选中子节点
-                    options.onSelect(node);
+                    if(options.onSelect){
+                        //选中子节点
+                        options.onSelect(node);
+                    }
 
                 }else{
 
                     li.attr("selectAttr","false");
                     li.children().children("a").css("color","#7f7f7f");
 
-                    //取消选中子节点
-                    options.onUnSelect(node);
+                    if(options.onUnSelect){
+                        //取消选中子节点
+                        options.onUnSelect(node);
+                    }
                 }
             }
 
@@ -1179,8 +1289,10 @@
                             var ul = getNode(data,false,options,target,currentClosedId,count);
                             liTarget.append(ul);
                             liTarget.attr("id",currentClosedId);
-                            //加载成功回调
-                            options.onLoadSuccess(node,data);
+                            if(options.onLoadSuccess){
+                                //加载成功回调
+                                options.onLoadSuccess(node,data);
+                            }
                             //判断折叠还是展开
                             collapseOrExpand(liDiv1,options,node);
                             //绑定node事件
@@ -1188,8 +1300,10 @@
                         },
                         error:function(error){
                             alert("数据请求错误");
-                            //请求数据失败回调
-                            options.onLoadError(error);
+                            if(options.onLoadError){
+                                //请求数据失败回调
+                                options.onLoadError(error);
+                            }
                         }
                     });
                 }else{
@@ -1208,14 +1322,18 @@
         if(elementTarget.siblings("ul").is(":hidden")){//显示  slideDown:让隐藏的ul以滑动的形式展开
             elementTarget.siblings("ul").slideDown();
             elementTarget.children("img").attr("src", "img/icons/icon_arrow_down1.png");
-            //展开回调
-            options.onExpand(node);
+            if(options.onExpand){
+                //展开回调
+                options.onExpand(node);
+            }
 
         }else{//隐藏   slideUp:让显示的ul以滑动的形式隐藏起来
             elementTarget.siblings("ul").slideUp();
             elementTarget.children("img").attr("src", "img/icons/icon_arrow_right1.png");
-            //折叠回调
-            options.onCollapse(node);
+            if(options.onCollapse){
+                //折叠回调
+                options.onCollapse(node);
+            }
         }
     }
 
@@ -1433,8 +1551,10 @@
                             liHtml.attr("id",currentClosedId);
                             //子节点变为父节点需要获取新的div,后面用于折叠与展开的判断
                             var subDiv1 = $(liHtml).children('div');
-                            //加载成功回调
-                            options.onLoadSuccess(node,data);
+                            //if(options.onLoadSuccess){
+                            //    //加载成功回调
+                            //    options.onLoadSuccess(node,data);
+                            //}
                             //判断折叠还是展开
                             collapseOrExpand(subDiv1,options,node);
                             //绑定node事件
@@ -1528,15 +1648,20 @@
                     elementTarget.siblings("ul").slideDown();
                     //elementTarget.children("i").addClass("fa-angle-down");
                     elementTarget.children("img").attr("src", "img/icons/icon_arrow_down1.png");
-                    //展开回调
-                    options.onExpand(node);
+                    if(options.onExpand){
+                        //展开回调
+                        options.onExpand(node);
+                    }
 
                 }else{//隐藏   slideUp:让显示的ul以滑动的形式隐藏起来
                     elementTarget.siblings("ul").slideUp();
                     //elementTarget.children("i").removeClass("fa-angle-down").addClass("fa-angle-right");
                     elementTarget.children("img").attr("src", "img/icons/icon_arrow_right1.png");
-                    //折叠回调
-                    options.onCollapse(node);
+                    if(options.onCollapse){
+                        //折叠回调
+                        options.onCollapse(node);
+                    }
+
                 }
             }
         },
@@ -1677,8 +1802,10 @@
 
                     var node = JSON.parse(collapseTarget.attr("nodeAttr"));
                     node["target"] = collapseTarget;
-                    //折叠回调
-                    options.onCollapse(node);
+                    if(options.onCollapse){
+                        //折叠回调
+                        options.onCollapse(node);
+                    }
                 }
             }
         },
@@ -1703,8 +1830,10 @@
 
                     var node = JSON.parse(expandTarget.attr("nodeAttr"));
                     node["target"] = expandTarget;
-                    //折叠回调
-                    options.onCollapse(node);
+                    if(options.onCollapse){
+                        //折叠回调
+                        options.onCollapse(node);
+                    }
                 }
             }
         },
