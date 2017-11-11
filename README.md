@@ -1,12 +1,12 @@
 
 |Title       |Description     |
-|:----------:|:-------------: |
-|customeTree |树状结构显示数据 |
+|:----------:|:-------------:|
+|customeTree |树状结构显示数据|
 
-##customTree
+## customTree
 一个自定义 js plugin。树状结构显示数据，具有展开，折叠，同步加载，异步加载功能。仿造easyUI中的tree，但是功能没有那么齐全。
 
-##Installation（使用）
+## Installation（使用）
 
 1）tree用空的div元素来定义
 ```
@@ -26,19 +26,19 @@ $("#tree1-div").createTree({
     });
 </script>
 ```
-##tree data format（数据格式）
+## tree data format（数据格式）
 
 |Name        |Description|
-|:----------:|:-------------: |
+|:----------:|:-------------:|
 |id          |节点的id，对于加载远程数据很重要|
 |text        |要显示的节点文本|
 |state       |节点的状态，为open或closed，当设置为closed，表示该节点还有子节点，可以远程加载子节点|
 |children    |子节点的节点数组|
 
-##attribute（属性）
+## attribute（属性）
 
 |Name        |Description|
-|:----------:|:-------------: |
+|:----------:|:-------------:|
 |url          |获取远程数据的url|
 |method        |请求url的方法|
 |width       |指定宽度|
@@ -47,7 +47,7 @@ $("#tree1-div").createTree({
 |isShowRadio    |是否显示radio|
 |isSingleSelect    |checkbox和radio都为false，是否是单选|
 
-##events（事件）
+## events（事件）
 
 该插件的回调事件，参数“node”，包括：
 
@@ -57,66 +57,41 @@ text：节点显示的文本
 
 state：节点的状态
 
-名称                         参数                          描述
+|Name        |Param     |Description|
+|:----------:|:-------------:|:-------------:|
+|onClick          |node|当用户点击一个节点时触发|
+|onDblClick          |node|当用户双击一个节点时触发|
+|onCheckboxSelect          |node|当用户选中checkbox时触发|
+|oncheckboxUnSelect          |node|当用户取消选中checkbox时触发|
+|onRadioSelect          |node|当用户选中radio时触发|
+|onRadioUnSelect          |node|当用户取消选中radio时触发|
+|onCollapse          |node|当节点折叠时触发|
+|onExpand          |node|当节点展开时触发|
+|onSelect          |node|当选中节点|
+|onUnSelect          |node|当取消选中节点|
+|onLoadSuccess          |node，data|当数据加载成功时触发|
+|onLoadError          |error|当数据加载失败是触发|
 
-onClick                      node                         当用户点击一个节点时触发。
+## methods（方法）
 
-onDblClick                   node                         当用户双击一个节点时触发。
+|Name        |Param     |Description|
+|:----------:|:-------------:|:-------------:|
+|getOptions          |none|返回树的选项（options）|
+|getSelected          |none|获取选中的节点并返回它，如果没有选中节点，则返回 null|
+|append          |param|追加一些子节点到一个节点（可以是父节点或者子节点，子节点则会变为父节点，然后才加上要.parent：DOM 对象，要追加到的父节点.data：数组，节点的数据|
+|remove          |target|移除一个节点和它的子节点，target 参数表示节点的 DOM 对象|
+|toggleNode          |none|切换节点的展开/折叠状态，target 参数表示节点的 DOM 对象|
+|collapseAll          |none|折叠所有的节点|
+|expandAll          |none|展开所有的节点|
+|loadData          |data|加载树的数据|
+|reload          |none|重新加载树的数据|
+|isLeafNode          |target|判断指定的target节点是不是子节点（即叶节点）|
+|findNode          |id|根据id找出该节点node|
+|collapseNode          |target|折叠一个节点|
+|expandNode          |target|展开一个节点|
 
-onCheckboxSelect             node                         当用户选中checkbox时触发。
+## attention（注意）
 
-oncheckboxUnSelect           node                         当用户取消选中checkbox时触发。
+*如果下载下来的项目运行，报错: Origin null is not allowed by Access-Control-Allow-Origin.
 
-onRadioSelect                node                         当用户选中radio时触发。
-
-onRadioUnSelect              node                         当用户取消选中radio时触发。
-
-onCollapse                   node                         当节点折叠时触发。
-
-onExpand                     node                         当节点展开时触发。
-
-onSelect                     node                         当选中节点。
-
-onUnSelect                   node                         当取消选中节点。
-
-onLoadSuccess                node，data                   当数据加载成功时触发。
-
-onLoadError                  error                        当数据加载失败是触发。
-
-7.methods（方法）
-
-名称                          参数                          描述      
-
-getOptions                    none                         返回树的选项（options）。
-
-getSelected                   none                         获取选中的节点并返回它，如果没有选中节点，则返回 null。
-
-append                        param                        追加一些子节点到一个节点（可以是父节点或者子节点，子节点则会变为父节点，然后才加上要添加的节点），param 参数有两个属性：
-                                                           parent：DOM 对象，要追加到的父节点。
-                                                           data：数组，节点的数据。
-                                                           
-remove                        target                       移除一个节点和它的子节点，target 参数表示节点的 DOM 对象。
-
-toggleNode                    target                       切换节点的展开/折叠状态，target 参数表示节点的 DOM 对象。
-
-collapseAll                   none                         折叠所有的节点。
-
-expandAll                     none                         展开所有的节点。
-
-loadData                      data                         加载树的数据。
-
-reload                        none                         重新加载树的数据。
-
-isLeafNode                    target                       判断指定的target节点是不是子节点（即叶节点）。
-
-findNode                      id                           根据id找出该节点node。
-
-collapseNode                  target                       折叠一个节点。
-
-expandNode                    target                       展开一个节点。
-
-8.attention（注意）
-
-如果下载下来的项目运行，报错: Origin null is not allowed by Access-Control-Allow-Origin.
-
-需要在html头部加入Access-Control-Allow-Origin。
+需要在html头部加入Access-Control-Allow-Origin。*
