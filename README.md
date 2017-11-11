@@ -6,7 +6,7 @@
 ## customTree
 一个自定义 js plugin。树状结构显示数据，具有展开，折叠，同步加载，异步加载功能。仿造easyUI中的tree，但是功能没有那么齐全。
 
-## Installation（使用）
+## Usage（使用）
 
 1）tree用空的div元素来定义
 ```
