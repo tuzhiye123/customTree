@@ -1,19 +1,19 @@
-1.customTree（自定义树）
 
-一个自定义 js plugin。
+|Title       |Description     |
+|:----------:|:-------------: |
+|customeTree |树状结构显示数据 |
 
-2.feature（特征）
+##customTree
+一个自定义 js plugin。树状结构显示数据，具有展开，折叠，同步加载，异步加载功能。仿造easyUI中的tree，但是功能没有那么齐全。
 
-树状结构显示数据，具有展开，折叠，同步加载，异步加载功能。仿造easyUI中的tree，但是功能没有那么齐全。
-
-3.usage（使用）
+##Installation（使用）
 
 1）tree用空的div元素来定义
-
+```
 <div id="tree1-div"></div>
-
+```
 2）javascript加载数据
-
+```
 <script type="text/javascript">
 $("#tree1-div").createTree({
         width:"500px",
@@ -25,34 +25,29 @@ $("#tree1-div").createTree({
         method:"POST"
     });
 </script>
+```
+##tree data format（数据格式）
 
-4.tree data format（数据格式）
+|Name        |Description|
+|:----------:|:-------------: |
+|id          |节点的id，对于加载远程数据很重要|
+|text        |要显示的节点文本|
+|state       |节点的状态，为open或closed，当设置为closed，表示该节点还有子节点，可以远程加载子节点|
+|children    |子节点的节点数组|
 
-id：节点的id，对于加载远程数据很重要。
+##attribute（属性）
 
-text：要显示的节点文本。
+|Name        |Description|
+|:----------:|:-------------: |
+|url          |获取远程数据的url|
+|method        |请求url的方法|
+|width       |指定宽度|
+|height    |指定高度|
+|isShowCheckbox    |是否显示checkbox|
+|isShowRadio    |是否显示radio|
+|isSingleSelect    |checkbox和radio都为false，是否是单选|
 
-state：节点的状态，为open或closed，当设置为closed，表示该节点还有子节点，可以远程加载子节点。
-
-children：子节点的节点数组。
-
-5.attribute（属性）
-
-url：获取远程数据的url。
-
-method：请求url的方法。
-
-width：指定宽度。
-
-height：指定高度。
-
-isShowCheckbox:是否显示checkbox。
-
-isShowRadio:是否显示radio。
-
-isSingleSelect:checkbox和radio都为false，是否是单选。
-
-6.events（事件）
+##events（事件）
 
 该插件的回调事件，参数“node”，包括：
 
