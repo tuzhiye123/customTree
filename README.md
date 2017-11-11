@@ -26,7 +26,7 @@ $("#tree1-div").createTree({
     });
 </script>
 ```
-## tree data format（数据格式）
+## Tree data format（数据格式）
 
 |Name        |Description|
 |:----------:|:-------------:|
@@ -35,7 +35,7 @@ $("#tree1-div").createTree({
 |state       |节点的状态，为open或closed，当设置为closed，表示该节点还有子节点，可以远程加载子节点|
 |children    |子节点的节点数组|
 
-## attribute（属性）
+## Attribute（属性）
 
 |Name        |Description|
 |:----------:|:-------------:|
@@ -47,7 +47,7 @@ $("#tree1-div").createTree({
 |isShowRadio    |是否显示radio|
 |isSingleSelect    |checkbox和radio都为false，是否是单选|
 
-## events（事件）
+## Events（事件）
 
 该插件的回调事件，参数“node”，包括：
 
@@ -72,7 +72,7 @@ state：节点的状态
 |onLoadSuccess          |node，data|当数据加载成功时触发|
 |onLoadError          |error|当数据加载失败是触发|
 
-## methods（方法）
+## Methods（方法）
 
 |Name        |Param     |Description|
 |:----------:|:-------------:|:-------------:|
@@ -90,8 +90,8 @@ state：节点的状态
 |collapseNode          |target|折叠一个节点|
 |expandNode          |target|展开一个节点|
 
-## attention（注意）
+## Attention（注意）
 
 **如果下载下来的项目运行，报错: Origin null is not allowed by Access-Control-Allow-Origin.**
 
-**需要在html头部加入Access-Control-Allow-Origin。**
+**需要在html头部加入Access-Control-Allow-Origin.**
