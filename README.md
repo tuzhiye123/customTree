@@ -92,6 +92,6 @@ state：节点的状态
 
 ## attention（注意）
 
-*如果下载下来的项目运行，报错: Origin null is not allowed by Access-Control-Allow-Origin.
+**如果下载下来的项目运行，报错: Origin null is not allowed by Access-Control-Allow-Origin.**
 
-需要在html头部加入Access-Control-Allow-Origin。*
+**需要在html头部加入Access-Control-Allow-Origin。**
